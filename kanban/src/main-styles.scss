@@ -1,0 +1,112 @@
+// global styles and changing bulma variables
+
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,700|Lato:400,800,900");
+
+$family-sans-serif: "Nunito", sans-serif;
+
+// Update some of Bulma's component Variables
+
+$control-border-width: 2px;
+$input-border-color: transparent;
+$input-shadow: none;
+
+// GLOBAL STYLES
+
+html,
+body {
+  height: 100%;
+}
+html {
+  background-image: url("./assets/background.png");
+  background-size: cover;
+  overflow-y: auto;
+}
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.app-name {
+  font-size: 1.8rem;
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+}
+.has-gradient-text {
+  background-color: #20bf55;
+  background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+// Board styling
+
+.bord {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  // override Automatic Minimum sizes
+
+  min-width: 0;
+  min-height: 0;
+
+  &__bar {
+    background-color: rgba(gray, 0.5);
+    padding: 0.5rem 0.9rem;
+    &--name {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: white;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-grow: 1;
+    overflow-x: auto;
+
+    &--columns {
+      display: flex;
+      flex-grow: 1;
+      &-column {
+        background-color: rgba(white, 0.5);
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        flex-basis: 0; // force columns to be same size, regardless of its content
+        min-width: 18.75rem;
+        margin: 3.125rem;
+        padding: 1.57rem;
+        border-radius: 0.25rem;
+        overflow-y: auto;
+
+        &:not(:last-child) {
+          margin-right: 0;
+        }
+
+        &-title {
+          font-size: 1.25rem;
+          font-weight: 800;
+          font-family: "Lato", sans-serif;
+          margin-bottom: 1.125rem;
+        }
+      }
+    }
+  }
+}
+
+.tasks__container {
+  flex-grow: 1;
+
+  &--task {
+    display: flex;
+    padding: 1rem 0.6rem;
+    background-color: white;
+    border-bottom: solid 1px #ddd;
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  }
+}

@@ -1,0 +1,60 @@
+<div class="root">
+  <div class="navbar has-background-dark">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <h1 class="app-name has-gradient-text">Kanban</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="bord">
+    <div class="bord__bar">
+      <p class="bord__bar--name">Board Name</p>
+    </div>
+
+    <div class="bord__wrapper">
+      <div class="bord__wrapper--columns" cdkDropListGroup>
+        <div class="bord__wrapper--columns-column">
+          <div class="bord__wrapper--columns-column-title">Ideas</div>
+
+          <div
+            class="tasks__container"
+            cdkDropList
+            #doneList="cdkDropList"
+            [cdkDropListData]="todos"
+            (cdkDropListDropped)="drop($event)"
+          >
+            <div
+              class="tasks__container--task"
+              *ngFor="let todo of todos"
+              cdkDrag
+            >
+              {{ todo }}
+            </div>
+          </div>
+        </div>
+        <div class="bord__wrapper--columns-column">
+          <div class="bord__wrapper--columns-column-title">Todo</div>
+          <div
+            class="tasks__container"
+            cdkDropList
+            #doneList="cdkDropList"
+            [cdkDropListData]="dones"
+            (cdkDropListDropped)="drop($event)"
+          >
+            <div
+              class="tasks__container--task"
+              *ngFor="let done of dones"
+              cdkDrag
+            >
+              {{ done }}
+            </div>
+          </div>
+        </div>
+        <div class="bord__wrapper--columns-column">
+          <div class="bord__wrapper--columns-column-title">Done</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
