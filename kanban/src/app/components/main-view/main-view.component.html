@@ -14,45 +14,29 @@
 
     <div class="bord__wrapper">
       <div class="bord__wrapper--columns" cdkDropListGroup>
-        <div class="bord__wrapper--columns-column">
-          <div class="bord__wrapper--columns-column-title">Ideas</div>
+        <div
+          class="bord__wrapper--columns-column"
+          *ngFor="let column of board.columns"
+        >
+          <div class="bord__wrapper--columns-column-title">
+            {{ column.name }}
+          </div>
 
           <div
             class="tasks__container"
             cdkDropList
             #doneList="cdkDropList"
-            [cdkDropListData]="todos"
+            [cdkDropListData]="column.tasks"
             (cdkDropListDropped)="drop($event)"
           >
             <div
               class="tasks__container--task"
-              *ngFor="let todo of todos"
+              *ngFor="let task of column.tasks"
               cdkDrag
             >
-              {{ todo }}
+              {{ task }}
             </div>
           </div>
-        </div>
-        <div class="bord__wrapper--columns-column">
-          <div class="bord__wrapper--columns-column-title">Todo</div>
-          <div
-            class="tasks__container"
-            cdkDropList
-            #doneList="cdkDropList"
-            [cdkDropListData]="dones"
-            (cdkDropListDropped)="drop($event)"
-          >
-            <div
-              class="tasks__container--task"
-              *ngFor="let done of dones"
-              cdkDrag
-            >
-              {{ done }}
-            </div>
-          </div>
-        </div>
-        <div class="bord__wrapper--columns-column">
-          <div class="bord__wrapper--columns-column-title">Done</div>
         </div>
       </div>
     </div>
